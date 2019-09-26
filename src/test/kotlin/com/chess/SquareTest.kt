@@ -1,6 +1,5 @@
 package com.chess
 
-import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
@@ -8,8 +7,7 @@ import kotlin.test.assertEquals
 class SquareTest {
 
     @Test
-    @DisplayName("test moves with step=1")
-    fun testMovesWithoutStep() {
+    fun `moves with step=1`() {
         val d5 = Square("D5")
 
         assertEquals(Square("C5"), d5.left())
@@ -19,8 +17,7 @@ class SquareTest {
     }
 
     @Test
-    @DisplayName("test moves with step=2")
-    fun testMovesWithStep2() {
+    fun `moves with step=2`() {
         val d5 = Square("D5")
 
         assertEquals(Square("B5"), d5.left(2))
@@ -30,8 +27,7 @@ class SquareTest {
     }
 
     @Test
-    @DisplayName("test symmetricity")
-    fun testSymmetric() {
+    fun `test symmetricity`() {
         val a1 = Square("A1")
 
         assertEquals(Square("A8"), a1.symmetricX())

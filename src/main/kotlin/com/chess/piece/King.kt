@@ -3,7 +3,7 @@ package com.chess.piece
 import com.chess.*
 import com.chess.Directions
 
-class King(override var position: Square, override val color: Color, override val board: Board) : Piece {
+class King(override var position: Square, override val color: Color) : Piece {
     private val directions =
         listOf(
             Directions.up,
@@ -16,7 +16,7 @@ class King(override var position: Square, override val color: Color, override va
             Directions.upRight
         )
 
-    override fun possibleMoves(): List<Square> {
+    override fun possibleMoves(board: Board): List<Square> {
         return MoveHelper(board, position, color)
             .setStepCount(1)
             .setDirections(directions)

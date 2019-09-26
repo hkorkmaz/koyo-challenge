@@ -4,7 +4,6 @@ import com.chess.Board
 import com.chess.Color
 import com.chess.Square
 import com.chess.piece.Rook
-import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
@@ -12,10 +11,8 @@ class RookTest {
     private val board = Board()
 
     @Test
-    @DisplayName("should return moves")
-    fun rookTest() {
-
-        val rook = Rook(Square("D5"), Color.WHITE, board)
+    fun `return moves`() {
+        val rook = Rook(Square("D5"), Color.WHITE)
 
         val expected = listOf(
             Square("D6"), Square("D7"), Square("D4"), Square("D3"),
@@ -23,7 +20,6 @@ class RookTest {
             Square("F5"), Square("G5"), Square("H5")
         )
 
-        assertEquals(expected, rook.possibleMoves())
+        assertEquals(expected, rook.possibleMoves(board))
     }
-
 }

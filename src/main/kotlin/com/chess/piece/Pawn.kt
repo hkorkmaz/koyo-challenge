@@ -6,13 +6,13 @@ import com.chess.Square
 import com.chess.SquareStatus
 
 
-class Pawn(override var position: Square, override val color: Color, override val board: Board) : Piece {
+class Pawn(override var position: Square, override val color: Color) : Piece {
 
     private var hasMoved = false
 
-    override fun possibleMoves(): List<Square> {
+    override fun possibleMoves(board: Board): List<Square> {
         val step = if (color == Color.BLACK) -1 else 1
-        return straightMoves(step) + diagonalMoves(step)
+        return straightMoves(board, step) + diagonalMoves(board, step)
     }
 
     override fun moveTo(position: Square) {
@@ -20,7 +20,7 @@ class Pawn(override var position: Square, override val color: Color, override va
         this.hasMoved = true
     }
 
-    private fun straightMoves(step: Int): List<Square> {
+    private fun straightMoves(board: Board, step: Int): List<Square> {
         val possibilities = if (!hasMoved) {
             listOf(position.up(step), position.up(step).up(step))
         } else {
@@ -33,7 +33,7 @@ class Pawn(override var position: Square, override val color: Color, override va
         }
     }
 
-    private fun diagonalMoves(step: Int): List<Square> {
+    private fun diagonalMoves(board: Board, step: Int): List<Square> {
         val possibilities = listOf(position.up(step).left(1), position.up(step).right(1))
         return possibilities.filter {
             val status = board.squareStatus(it, color)

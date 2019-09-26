@@ -1,6 +1,5 @@
 package com.chess
 
-import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
@@ -8,9 +7,7 @@ class MoveHelperTest {
     private val board = Board()
 
     @Test
-    @DisplayName("should return moves")
-    fun moveHelperTest1() {
-
+    fun `return moves`() {
         val directions = listOf(Directions.up, Directions.left)
 
         val moves = MoveHelper(board, Square("D5"), Color.WHITE)
@@ -24,9 +21,7 @@ class MoveHelperTest {
     }
 
     @Test
-    @DisplayName("shouldn't return blocked squares")
-    fun moveHelperTest2() {
-
+    fun `not return blocked squares`() {
         val directions = listOf(Directions.up, Directions.down)
 
         val moves = MoveHelper(board, Square("D5"), Color.WHITE)
@@ -40,9 +35,7 @@ class MoveHelperTest {
     }
 
     @Test
-    @DisplayName("shouldn't return squares out of board")
-    fun moveHelperTest3() {
-
+    fun `not return squares out of board`() {
         val directions = listOf(Directions.left)
 
         val moves = MoveHelper(board, Square("D5"), Color.WHITE)
@@ -56,9 +49,7 @@ class MoveHelperTest {
     }
 
     @Test
-    @DisplayName("shouldn't return anything if piece is blocked")
-    fun moveHelperTest4() {
-
+    fun `not return anything if piece is blocked`() {
         val directions = listOf(Directions.up)
 
         val moves = MoveHelper(board, Square("D6"), Color.BLACK)

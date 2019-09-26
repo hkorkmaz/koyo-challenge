@@ -11,8 +11,7 @@ import kotlin.test.assertEquals
 class BoardTest {
 
     @Test
-    @DisplayName("should move piece if everything is ok")
-    fun boardTest1() {
+    fun `move piece if everything is ok`() {
         val board = Board()
         val player = Player("player", Color.WHITE)
 
@@ -25,8 +24,7 @@ class BoardTest {
     }
 
     @Test
-    @DisplayName("should throw exception for invalid player move")
-    fun boardTest2() {
+    fun `throw exception for invalid player move`() {
         val board = Board()
         val player = Player("player", Color.BLACK)
 
@@ -36,8 +34,7 @@ class BoardTest {
     }
 
     @Test
-    @DisplayName("should throw exception for piece is not found")
-    fun boardTest3() {
+    fun `throw exception for piece is not found`() {
         val board = Board()
         val player = Player("player", Color.BLACK)
 
@@ -47,8 +44,7 @@ class BoardTest {
     }
 
     @Test
-    @DisplayName("should throw exception for invalid move")
-    fun boardTest4() {
+    fun `throw exception for invalid move`() {
         val board = Board()
         val player = Player("player", Color.WHITE)
 
@@ -59,8 +55,7 @@ class BoardTest {
 
 
     @Test
-    @DisplayName("should return square status")
-    fun boardTest5() {
+    fun `return square status`() {
         val board = Board()
 
         val status1 = board.squareStatus(Square("A1"), Color.WHITE)
@@ -73,8 +68,7 @@ class BoardTest {
     }
 
     @Test
-    @DisplayName("should return validity of a square")
-    fun boardTest6() {
+    fun `return validity of a square`() {
         val board = Board()
 
         val result1 = board.isSquareValid(Square("A1"))

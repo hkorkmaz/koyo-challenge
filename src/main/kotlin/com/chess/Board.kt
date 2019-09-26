@@ -24,7 +24,7 @@ class Board {
         if (piece.color != player.color)
             throw InvalidPlayerException(piece)
 
-        if (targetSquare !in piece.possibleMoves())
+        if (targetSquare !in piece.possibleMoves(this))
             throw InvalidMoveException(piece, targetSquare)
 
         pieces.remove(sourceSquare)
@@ -98,8 +98,8 @@ class Board {
         // Pawns
         val a2 = Square("A2")
         for (i in 0 until BOARD_SIZE) {
-            val pawnWhite = Pawn(a2.right(i), Color.WHITE, this)
-            val pawnBlack = Pawn(a2.right(i).symmetricX(), Color.BLACK, this)
+            val pawnWhite = Pawn(a2.right(i), Color.WHITE)
+            val pawnBlack = Pawn(a2.right(i).symmetricX(), Color.BLACK)
             pieces[a2.right(i)] = pawnWhite
             pieces[a2.right(i).symmetricX()] = pawnBlack
         }
@@ -107,35 +107,35 @@ class Board {
         // Bishops
         val c1 = Square("C1")
         val f1 = Square("F1")
-        pieces[c1] = Bishop(c1, Color.WHITE, this)
-        pieces[f1] = Bishop(f1, Color.WHITE, this)
-        pieces[c1.symmetricX()] = Bishop(c1.symmetricX(), Color.BLACK, this)
-        pieces[f1.symmetricX()] = Bishop(f1.symmetricX(), Color.BLACK, this)
+        pieces[c1] = Bishop(c1, Color.WHITE)
+        pieces[f1] = Bishop(f1, Color.WHITE)
+        pieces[c1.symmetricX()] = Bishop(c1.symmetricX(), Color.BLACK)
+        pieces[f1.symmetricX()] = Bishop(f1.symmetricX(), Color.BLACK)
 
         // Knights
         val b1 = Square("B1")
         val g1 = Square("G1")
-        pieces[b1] = Knight(b1, Color.WHITE, this)
-        pieces[g1] = Knight(g1, Color.WHITE, this)
-        pieces[b1.symmetricX()] = Knight(b1.symmetricX(), Color.BLACK, this)
-        pieces[g1.symmetricX()] = Knight(g1.symmetricX(), Color.BLACK, this)
+        pieces[b1] = Knight(b1, Color.WHITE)
+        pieces[g1] = Knight(g1, Color.WHITE)
+        pieces[b1.symmetricX()] = Knight(b1.symmetricX(), Color.BLACK)
+        pieces[g1.symmetricX()] = Knight(g1.symmetricX(), Color.BLACK)
 
         // Rooks
         val a1 = Square("A1")
         val h1 = Square("H1")
-        pieces[a1] = Rook(a1, Color.WHITE, this)
-        pieces[h1] = Rook(h1, Color.WHITE, this)
-        pieces[a1.symmetricX()] = Rook(a1.symmetricX(), Color.BLACK, this)
-        pieces[h1.symmetricX()] = Rook(h1.symmetricX(), Color.BLACK, this)
+        pieces[a1] = Rook(a1, Color.WHITE)
+        pieces[h1] = Rook(h1, Color.WHITE)
+        pieces[a1.symmetricX()] = Rook(a1.symmetricX(), Color.BLACK)
+        pieces[h1.symmetricX()] = Rook(h1.symmetricX(), Color.BLACK)
 
         // Kings
         val e1 = Square("E1")
-        pieces[e1] = King(e1, Color.WHITE, this)
-        pieces[e1.symmetricX()] = King(e1.symmetricX(), Color.BLACK, this)
+        pieces[e1] = King(e1, Color.WHITE)
+        pieces[e1.symmetricX()] = King(e1.symmetricX(), Color.BLACK)
 
         // Queens
         val d1 = Square("D1")
-        pieces[d1] = Queen(d1, Color.WHITE, this)
-        pieces[d1.symmetricX()] = Queen(d1.symmetricX(), Color.BLACK, this)
+        pieces[d1] = Queen(d1, Color.WHITE)
+        pieces[d1.symmetricX()] = Queen(d1.symmetricX(), Color.BLACK)
     }
 }

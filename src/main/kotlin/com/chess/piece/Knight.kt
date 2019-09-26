@@ -5,9 +5,9 @@ import com.chess.Color
 import com.chess.Square
 import com.chess.SquareStatus
 
-class Knight(override var position: Square, override val color: Color, override val board: Board) : Piece {
+class Knight(override var position: Square, override val color: Color) : Piece {
 
-    override fun possibleMoves(): List<Square> {
+    override fun possibleMoves(board: Board): List<Square> {
         val t1 = position.left().down(2)
         val t2 = position.left().up(2)
         val t3 = position.right().down(2)

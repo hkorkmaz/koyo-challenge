@@ -7,9 +7,8 @@ import com.chess.Square
 interface Piece {
     var position: Square
     val color: Color
-    val board: Board
 
-    fun possibleMoves(): List<Square>
+    fun possibleMoves(board: Board): List<Square>
 
     fun moveTo(position: Square) {
         this.position = position
